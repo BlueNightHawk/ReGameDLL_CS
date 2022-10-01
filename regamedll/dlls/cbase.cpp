@@ -1408,7 +1408,7 @@ VectorRef CBaseEntity::__API_HOOK(FireBullets3)(VectorRef vecSrc, VectorRef vecD
 			if (!bIsPenatrable)
 				iPenetration = 0;
 
-			if (tr.iHitgroup == HITGROUP_SHIELD)
+			if (tr.iHitgroup == HITGROUP_SHIELD && pEntity->IsPlayer() && ((CBasePlayer *)pEntity)->HasShield())
 			{
 				EMIT_SOUND(pEntity->edict(), CHAN_VOICE, (RANDOM_LONG(0, 1) == 1) ? "weapons/ric_metal-1.wav" : "weapons/ric_metal-2.wav", VOL_NORM, ATTN_NORM);
 				UTIL_Sparks(tr.vecEndPos);
